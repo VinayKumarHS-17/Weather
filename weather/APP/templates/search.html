@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    
+</head>
+<body>
+    <div class="d-flex align-items center justify-content center flex-column">
+        <div class="container mt-5 w-50">
+            <h1>Weather</h1>
+            <form action="" method="get">
+                <div class="mb-3">
+                    <label for="">City</label>
+                    <input type="text" class="form-control" id="q" name="q" required placeholder="Search..">
+                </div>
+                <button type="submit" class="btn btn-primary">Get Weather</button>
+            </form>
+        </div>
+    
+        <div class="container mt-3 w-75">
+            {% if resp %}
+                <h2>Weather in {{ resp.name }}</h2>
+                <p>Temperature: {{ resp.main.temp }}°C</p>
+                <p>Humidity: {{ resp.main.humidity }}%</p>
+                <p>Weather Condition: {{ resp.weather.0.description }}</p>
+            {% elif e %}
+                <p>{{ e }}</p>
+            {% else %}
+                <p>Enter a city to get the weather</p>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
